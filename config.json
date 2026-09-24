@@ -23,7 +23,7 @@
         "store-code": "main_website_store",
         "store-id": "main_website_store",
         "store-name": "Default Store View",
-        "store-url": "https://da.live/#/oxm208/my-adobe-commerce-storefront",
+        "store-url": "https://main--my-adobe-commerce-storefront--oxm208.aem.live",
         "store-view-code": "default",
         "store-view-id": "default",
         "store-view-name": "Default Store View",
