@@ -154,25 +154,27 @@ export default async function decorate(block) {
   if ($tagline) {
     $tagline.textContent = 'Free shipping on orders over $50';
   }
-  events.on('pdp/data', (product) => {
-    if (!product) return;
-    const value = product.metaTitle;
+  events.on('pdp/data', (pdpProduct) => {
+    if (!pdpProduct) return;
+
+    const value = pdpProduct.metaTitle;
     if (value) {
-        $customAttribute.innerHTML = `
+      $customAttribute.innerHTML = `
         <div class="custom-attribute">
-        <dt>Custom Attribute Label</dt>
-        <dd>${value}</dd>
+          <dt>Custom Attribute Label</dt>
+          <dd>${value}</dd>
         </div>
-        `;
-      }      
-    if (product.inStock) {
-        $stock.textContent = '● In Stock';
-        $stock.className = 'product-details__stock stock-badge stock-badge--in-stock';
-      } else {
-        $stock.textContent = '● Out of Stock';
-        $stock.className = 'product-details__stock stock-badge stock-badge--out-of-stock';
-      }
-    }, { eager: true });
+      `;
+    }
+
+    if (pdpProduct.inStock) {
+      $stock.textContent = '● In Stock';
+      $stock.className = 'product-details__stock stock-badge stock-badge--in-stock';
+    } else {
+      $stock.textContent = '● Out of Stock';
+      $stock.className = 'product-details__stock stock-badge stock-badge--out-of-stock';
+    }
+  }, { eager: true });
   const gallerySlots = {
     CarouselThumbnail: (ctx) => {
       if (ctx.mediaType === 'image') {
